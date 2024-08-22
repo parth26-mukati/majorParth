@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.config.JpaRepositoryConfigExtensi
 import com.sheryians.major.model.Category;
 import com.sheryians.major.model.Product;
 
-public class CategoryRepository extends JpaRepository<Category, Integer>{
+public interface CategoryRepository extends JpaRepository<Category, Integer>{
 
 }

@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.web.DefaultRedirectStrategy;
+import org.springframework.security.web.RedirectStrategy;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
 import com.sheryians.major.model.Role;
@@ -17,10 +22,10 @@ import com.sheryians.major.repository.RoleRepository;
 import com.sheryians.major.repository.UserRepository;
 
 @Component
-public class GoogleOAuth2SuccessHandler {
+public class GoogleOAuth2SuccessHandler implements AuthenticationSuccessHandler {
 	@Autowired
 	UserRepository userRepository;
-	
+	 
 	@Autowired
 	RoleRepository roleRepository;
 	
@@ -44,7 +49,7 @@ public class GoogleOAuth2SuccessHandler {
 			user.setRoles(roles);
 			userRepository.save(user);
 		}
-		redirectStrategy.sendRedirect(httpServletReqsuest, httpServletResponse, "/");
+		redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "/");
 	}
 	
 

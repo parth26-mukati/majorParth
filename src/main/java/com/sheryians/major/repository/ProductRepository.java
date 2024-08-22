@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.sheryians.major.model.Product;
 
-public class ProductRepository extends JpaRepository<Product, Long>{
-	List<Product> findAllByCatgory_Id(int id);
+public interface ProductRepository extends JpaRepository<Product, Long>{
+	List<Product> findAllByCategory_Id(int id);
 
 }
